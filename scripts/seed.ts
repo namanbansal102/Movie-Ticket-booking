@@ -48,12 +48,12 @@ async function seedDatabase() {
     await db.collection("bookings").deleteMany({})
 
     // Insert movies
-    const movieResult = await db.collection("movies").insertMany(movies.map((m) => ({ ...m, createdAt: new Date() })))
+    const movieResult :any= await db.collection("movies").insertMany(movies.map((m) => ({ ...m, createdAt: new Date() })))
 
     console.log(`Inserted ${movieResult.insertedCount} movies`)
 
     // Insert showtimes for each movie
-    const movieIds = Array.from(movieResult.insertedIds)
+    const movieIds:any = Array.from(movieResult.insertedIds)
     const showtimes = []
     const today = new Date()
 
@@ -75,7 +75,7 @@ async function seedDatabase() {
       }
     }
 
-    const showResult = await db.collection("showtimes").insertMany(showtimes)
+    const showResult:any = await db.collection("showtimes").insertMany(showtimes)
     console.log(`Inserted ${showResult.insertedCount} showtimes`)
 
     // Insert seats for each showtime

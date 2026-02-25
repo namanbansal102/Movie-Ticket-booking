@@ -1,6 +1,5 @@
-import type { Movie, Showtime } from "./types"
 
-export const mockMovies: Movie[] = [
+export const mockMovies: any = [
   {
     id: "1",
     title: "Quantum Nexus",
@@ -75,7 +74,7 @@ export const mockMovies: Movie[] = [
   },
 ]
 
-export const mockShowtimes: Showtime[] = [
+export const mockShowtimes: any= [
   { id: "s1", movieId: "1", time: "10:00 AM", format: "2D", price: 8.99, availableSeats: 45, totalSeats: 96 },
   { id: "s2", movieId: "1", time: "01:30 PM", format: "3D", price: 11.99, availableSeats: 12, totalSeats: 96 },
   { id: "s3", movieId: "1", time: "05:00 PM", format: "2D", price: 8.99, availableSeats: 78, totalSeats: 96 },

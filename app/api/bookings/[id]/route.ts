@@ -1,13 +1,13 @@
 import { connectToDatabase } from "@/lib/mongodb"
 import { ObjectId } from "mongodb"
 
-export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(request: Request, { params }: { params:any }) {
   try {
     const db = await connectToDatabase().then((c) => c.db)
     const { id } = await params;
     // Try find by ObjectId first, but also allow lookup by bookingId string (e.g., BK...)
     let booking: any = null
-
+    // let id:any=1
     // attempt as ObjectId
     try {
       booking = await db.collection("bookings").findOne({ _id: new ObjectId(id) })

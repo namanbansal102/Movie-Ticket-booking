@@ -7,7 +7,7 @@ interface MovieCardProps {
   index?: number
 }
 
-export default function MovieCard({ movie, index = 0 }: MovieCardProps) {
+export default function MovieCard({ movie, index = 0 }: any) {
   return (
     <Link href={`/movie/${movie.id}`}>
       <div
@@ -35,7 +35,7 @@ export default function MovieCard({ movie, index = 0 }: MovieCardProps) {
           <p className="text-sm text-[#cbd5e1] line-clamp-2 mb-2">{movie.description}</p>
           <div className="flex items-center justify-between text-sm">
             <div className="flex gap-2">
-              {movie.genre.slice(0, 2).map((g) => (
+              {movie.genre.slice(0, 2).map((g:any) => (
                 <span key={g} className="px-2 py-1 rounded bg-[#1e293b] text-[#06b6d4] text-xs">
                   {g}
                 </span>

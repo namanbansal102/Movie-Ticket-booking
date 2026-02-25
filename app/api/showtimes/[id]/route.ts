@@ -1,12 +1,13 @@
 import { connectToDatabase } from "@/lib/mongodb"
 import { ObjectId } from "mongodb"
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const db = await connectToDatabase().then((c) => c.db)
-    console.log("my params are::::",params);
+    const { id } = await params;
+    console.log("my params are::::",id);
     
-    const showtime = await db.collection("showtimes").findOne({ _id: new ObjectId(params.id) })
+    const showtime = await db.collection("showtimes").findOne({ _id: new ObjectId(id) })
 
     if (!showtime) {
       return Response.json({ success: false, message: "Showtime not found" }, { status: 404 })

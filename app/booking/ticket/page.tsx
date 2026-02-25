@@ -1,10 +1,10 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { QRCodeSVG } from "qrcode.react"
 
-export default function TicketPage() {
+function TicketPageContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const bookingId = searchParams.get("bookingId")
@@ -132,5 +132,13 @@ export default function TicketPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function TicketPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-black flex items-center justify-center"><span className="text-white">Loading ticket...</span></div>}>
+      <TicketPageContent />
+    </Suspense>
   )
 }

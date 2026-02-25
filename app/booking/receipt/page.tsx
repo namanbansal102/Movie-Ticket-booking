@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 
-export default function ReceiptPage() {
+function ReceiptPageContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const bookingId = searchParams.get("bookingId")
@@ -106,5 +106,13 @@ export default function ReceiptPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function ReceiptPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center"><span>Loading receipt...</span></div>}>
+      <ReceiptPageContent />
+    </Suspense>
   )
 }

@@ -57,7 +57,7 @@ export default function MovieDetails() {
 
         // Fall back to mock data if MongoDB is empty
         if (!movieData) {
-          const mockMovie = mockMovies.find((m) => m.id === movieId)
+          const mockMovie:any = mockMovies.find((m:any) => m.id === movieId)
           if (mockMovie) {
             movieData = {
               id: mockMovie.id,
@@ -87,8 +87,8 @@ export default function MovieDetails() {
         // Fall back to mock showtimes if MongoDB is empty
         if (showtimesData.length === 0) {
           showtimesData = mockShowtimes
-            .filter((st) => st.movieId === movieId)
-            .map((st, index) => ({
+            .filter((st:any) => st.movieId === movieId)
+            .map((st:any, index:any) => ({
               id: st.id,
               movieId: st.movieId,
               time: st.time,

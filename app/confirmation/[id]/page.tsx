@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,7 @@ import { useAuth } from "@/lib/auth-context";
 import { Input } from "@/components/ui/input";
 import { ArrowLeft, Check, Copy, Download } from "lucide-react";
 
-export default function Confirmation() {
+function ConfirmationContent() {
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -393,5 +393,13 @@ Date: ${new Date().toLocaleString()}
         </div>
       </section>
     </div>
+  );
+}
+
+export default function Confirmation() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><span>Loading confirmation...</span></div>}>
+      <ConfirmationContent />
+    </Suspense>
   );
 }

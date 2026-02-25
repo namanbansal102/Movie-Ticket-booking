@@ -98,7 +98,7 @@ export async function seedDatabaseOnStartup() {
       console.log("[v0] Seeding database with movies...")
 
       // Insert movies
-      const movieResult = await db.collection("movies").insertMany(
+      const movieResult:any = await db.collection("movies").insertMany(
         movies.map((m) => ({
           ...m,
           createdAt: new Date(),
@@ -108,7 +108,7 @@ export async function seedDatabaseOnStartup() {
       console.log(`[v0] Inserted ${movieResult.insertedCount} movies`)
 
       // Insert showtimes for each movie
-      const movieIds = Array.from(movieResult.insertedIds)
+      const movieIds:any = Array.from(movieResult.insertedIds)
       const showtimes = []
       const today = new Date()
 
@@ -130,7 +130,7 @@ export async function seedDatabaseOnStartup() {
         }
       }
 
-      const showResult = await db.collection("showtimes").insertMany(showtimes)
+      const showResult:any = await db.collection("showtimes").insertMany(showtimes)
       console.log(`[v0] Inserted ${showResult.insertedCount} showtimes`)
 
       // Insert seats for each showtime

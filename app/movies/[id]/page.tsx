@@ -65,13 +65,13 @@ export default function MovieDetailPage() {
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h2 className="text-2xl font-bold mb-6">Select Showtime</h2>
           
-          {Object.entries(groupedShowtimes).map(([date, times]) => (
+          {Object.entries(groupedShowtimes).map(([date, times]:any) => (
             <div key={date} className="mb-6">
               <h3 className="text-lg font-semibold mb-3 text-gray-700">
                 {new Date(date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-                {times.map((showtime) => (
+                {times.map((showtime:any) => (
                   <button
                     key={showtime._id}
                     onClick={() => handleShowtimeSelect(showtime)}

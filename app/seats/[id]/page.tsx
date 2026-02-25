@@ -90,8 +90,8 @@ export default function SeatSelection() {
 
         // ---------- FALLBACK MOCK MOVIE ----------
         if (!movieData) {
-          const mockMovie = mockMovies.find(
-            (m) => m.id === movieId || m._id === movieId
+          const mockMovie:any = mockMovies.find(
+            (m:any) => m.id === movieId || m._id === movieId
           )
           if (mockMovie) {
             movieData = { id: mockMovie.id, title: mockMovie.title }
